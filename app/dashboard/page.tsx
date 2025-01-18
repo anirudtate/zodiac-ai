@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getAstroResponse } from '@/lib/gemini';
-import { Sparkles, Moon, MessageSquare, LogOut, Calendar, Clock, MapPin, Info } from 'lucide-react';
+import { Sparkles, Moon, MessageSquare, LogOut, Calendar, Clock, MapPin, Info, Hexagon } from 'lucide-react';
 import { RenderMarkdown } from '@/components/markdown';
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import {
@@ -18,6 +18,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { KundliChart } from '@/components/kundli-chart';
 
 export default function Dashboard() {
   const [userInfo, setUserInfo] = useState<Partial<UserBirthInfo>>({});
@@ -26,6 +27,8 @@ export default function Dashboard() {
   const [customResponse, setCustomResponse] = useState('');
   const [horoscopeLoading, setHoroscopeLoading] = useState(false);
   const [question, setQuestion] = useState('');
+  const [kundliData, setKundliData] = useState(null);
+  const [kundliLoading, setKundliLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -104,7 +107,7 @@ Please provide specific insights related to the question, using your birth detai
           <div className="flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-primary animate-pulse" />
             <h1 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
-              Zodiac AI
+              AstroHuff
             </h1>
           </div>
           <div className="flex items-center gap-2">
@@ -161,8 +164,12 @@ Please provide specific insights related to the question, using your birth detai
           <main className="flex-1 space-y-6">
             <Card>
               <CardContent className="pt-6">
-                <Tabs defaultValue="horoscope" className="w-full">
-                  <TabsList className="grid w-full grid-cols-2 mb-4">
+                <Tabs defaultValue="kundli" className="w-full">
+                  <TabsList className="grid w-full grid-cols-3 mb-4">
+                    <TabsTrigger value="kundli" className="flex items-center gap-2">
+                      <Hexagon className="h-4 w-4" />
+                      <span>Kundli</span>
+                    </TabsTrigger>
                     <TabsTrigger value="horoscope" className="flex items-center gap-2">
                       <Moon className="h-4 w-4" />
                       <span>Daily Horoscope</span>
@@ -172,6 +179,23 @@ Please provide specific insights related to the question, using your birth detai
                       <span>Ask AI</span>
                     </TabsTrigger>
                   </TabsList>
+
+                  <TabsContent value="kundli" className="space-y-4">
+                    <div className="space-y-4">
+                      <div className="text-sm text-muted-foreground">
+                        <p>View your Vedic birth chart (Kundli) based on your birth details. This chart shows the position of planets at the time of your birth.</p>
+                      </div>
+                      <Card>
+                        <CardContent className="pt-6">
+                          <KundliChart
+                            dateOfBirth={userInfo.dateOfBirth || ''}
+                            timeOfBirth={userInfo.timeOfBirth || ''}
+                            placeOfBirth={userInfo.placeOfBirth || ''}
+                          />
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </TabsContent>
 
                   <TabsContent value="horoscope" className="space-y-4">
                     <div className="space-y-4">

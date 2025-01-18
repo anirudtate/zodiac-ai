@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zodiac AI - Your Personal Astrological Guide",
+  title: "AstroHuff - Your Personal Astrological Guide",
   description: "Get personalized astrological insights and daily horoscopes powered by AI",
 };
 
