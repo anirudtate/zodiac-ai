@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import { Body, Observer } from 'astronomy-engine';
+import { Body } from 'astronomy-engine';
 
 interface KundliChartProps {
   dateOfBirth: string;
@@ -39,21 +39,6 @@ const RASHI_SYMBOLS = {
   Aquarius: '♒',
   Pisces: '♓'
 } as const;
-
-const HOUSE_DESCRIPTIONS = {
-  1: 'Self, physical appearance, and personality',
-  2: 'Wealth, family, speech, and resources',
-  3: 'Courage, siblings, and communication',
-  4: 'Home, mother, comforts, and property',
-  5: 'Creativity, children, education, and romance',
-  6: 'Health, service, obstacles, and enemies',
-  7: 'Marriage, partnerships, and relationships',
-  8: 'Transformations, longevity, and mysteries',
-  9: 'Luck, religion, spirituality, and higher learning',
-  10: 'Career, status, and social standing',
-  11: 'Gains, aspirations, and friendships',
-  12: 'Losses, expenses, spirituality, and isolation'
-};
 
 export function KundliChart({ dateOfBirth, timeOfBirth, placeOfBirth }: KundliChartProps) {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -191,12 +176,6 @@ export function KundliChart({ dateOfBirth, timeOfBirth, placeOfBirth }: KundliCh
 
     // Calculate and add planetary positions
     try {
-      const [year, month, day] = dateOfBirth.split('-').map(Number);
-      const [hour, minute] = timeOfBirth.split(':').map(Number);
-      
-      const date = new Date(year, month - 1, day, hour, minute);
-      
-      // Calculate positions for major planets
       const planets = [
         { symbol: '☉', name: 'Sun', body: Body.Sun },
         { symbol: '☽', name: 'Moon', body: Body.Moon },

@@ -27,8 +27,6 @@ export default function Dashboard() {
   const [customResponse, setCustomResponse] = useState('');
   const [horoscopeLoading, setHoroscopeLoading] = useState(false);
   const [question, setQuestion] = useState('');
-  const [kundliData, setKundliData] = useState(null);
-  const [kundliLoading, setKundliLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
