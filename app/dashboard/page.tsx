@@ -163,20 +163,22 @@ Please provide specific insights related to the question, using your birth detai
             <Card>
               <CardContent className="pt-6">
                 <Tabs defaultValue="kundli" className="w-full">
-                  <TabsList className="grid w-full grid-cols-3 mb-4">
-                    <TabsTrigger value="kundli" className="flex items-center gap-2">
-                      <Hexagon className="h-4 w-4" />
-                      <span>Kundli</span>
-                    </TabsTrigger>
-                    <TabsTrigger value="horoscope" className="flex items-center gap-2">
-                      <Moon className="h-4 w-4" />
-                      <span>Daily Horoscope</span>
-                    </TabsTrigger>
-                    <TabsTrigger value="ask" className="flex items-center gap-2">
-                      <MessageSquare className="h-4 w-4" />
-                      <span>Ask AI</span>
-                    </TabsTrigger>
-                  </TabsList>
+                  <div className="relative">
+                    <TabsList className="w-full md:grid md:grid-cols-3 flex md:flex-none overflow-x-auto no-scrollbar pb-1 mb-4">
+                      <TabsTrigger value="kundli" className="flex items-center gap-2 whitespace-nowrap md:whitespace-normal">
+                        <Hexagon className="h-4 w-4" />
+                        <span>Kundli</span>
+                      </TabsTrigger>
+                      <TabsTrigger value="horoscope" className="flex items-center gap-2 whitespace-nowrap md:whitespace-normal">
+                        <Moon className="h-4 w-4" />
+                        <span>Daily Horoscope</span>
+                      </TabsTrigger>
+                      <TabsTrigger value="ask" className="flex items-center gap-2 whitespace-nowrap md:whitespace-normal">
+                        <MessageSquare className="h-4 w-4" />
+                        <span>Ask AI</span>
+                      </TabsTrigger>
+                    </TabsList>
+                  </div>
 
                   <TabsContent value="kundli" className="space-y-4">
                     <div className="space-y-4">
