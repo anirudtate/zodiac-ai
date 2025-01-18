@@ -46,7 +46,7 @@ export default function Dashboard() {
     setHoroscopeLoading(true);
     try {
       const response = await getAstroResponse(
-        `Dear ${userInfo.name}, I'd love to share your daily astrological insights.
+        `Dear ${userInfo.name}, I&apos;d love to share your daily astrological insights.
 
 Birth Details:
 - Date: ${userInfo.dateOfBirth}
@@ -204,7 +204,7 @@ Please provide specific insights related to the question, using your birth detai
                   <TabsContent value="ask" className="space-y-4">
                     <div className="space-y-4">
                       <div className="text-sm text-muted-foreground">
-                        <p>Ask specific questions about your life, relationships, career, or any area you'd like cosmic guidance on. Our AI astrologer will provide personalized insights.</p>
+                        <p>Ask specific questions about your life, relationships, career, or any area you&apos;d like cosmic guidance on. Our AI astrologer will provide personalized insights.</p>
                       </div>
                       <div className="flex gap-2">
                         <Input

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Clock } from 'lucide-react';
 import { getUserInfo, saveUserInfo, isUserInfoComplete } from '@/lib/storage';
 import type { UserBirthInfo, OnboardingStep } from '@/lib/types';
 import { useRouter } from 'next/navigation';
@@ -72,7 +71,7 @@ export default function Home() {
                 Discover Your Cosmic Journey
               </h1>
               <p className="text-foreground/70 text-lg">
-                Let's start by getting to know you better
+                Let&apos;s start by getting to know you better
               </p>
             </motion.div>
 
@@ -88,7 +87,7 @@ export default function Home() {
                 {step === 'name' && (
                   <div className="space-y-4">
                     <label className="block text-base font-medium text-foreground/90">
-                      What's your name?
+                      What&apos;s your name?
                     </label>
                     <Input
                       type="text"
@@ -168,7 +167,7 @@ export default function Home() {
                 {step === 'gender' && (
                   <div className="space-y-4">
                     <label className="block text-base font-medium text-foreground/90">
-                      What's your gender?
+                      What&apos;s your gender?
                     </label>
                     <div className="grid grid-cols-3 gap-3">
                       {(['male', 'female', 'other'] as const).map((gender) => (
